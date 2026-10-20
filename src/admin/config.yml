@@ -2,7 +2,7 @@
 # STEP: replace YOUR-GITHUB-USERNAME below with your GitHub username.
 backend:
   name: github
-  repo: YOUR-GITHUB-USERNAME/whatgrannydid
+  repo: https://github.com/morganmorehead/whatgrannydid
   branch: main
 
 site_url: https://whatgrannydid.com

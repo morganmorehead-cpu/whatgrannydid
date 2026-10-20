@@ -1,0 +1,5 @@
+<li>
+  <a href="{{ f.data.link or '#' }}" rel="sponsored noopener" target="_blank">{{ f.data.title }}</a>{% if f.data.featured %}<span class="featured-tag">Top pick</span>{% endif %}
+  {% if f.data.description %}<span>{{ f.data.description }}</span>{% endif %}
+  {% if f.data.deal %}<span class="deal">{{ f.data.deal }}</span>{% endif %}
+</li>

@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+<main>
+<article class="article">
+  <p class="kicker">{{ status }}</p>
+  <h1>{{ title }}</h1>
+  {% if description %}<p class="section-intro">{{ description }}</p>{% endif %}
+  {% if image %}<img class="hero-img" src="{{ image }}" alt="{{ title }}">{% endif %}
+  {{ content | safe }}
+  {% if link and status != "Coming soon" %}<p><a class="btn btn-primary" href="{{ link }}">{{ buttonText or "Enroll now" }}</a></p>
+  {% else %}<p><a class="btn btn-primary" href="{{ site.mealPlanLink }}">Join the list to hear first</a></p>{% endif %}
+  <p class="back"><a href="/courses/">Back to courses</a></p>
+</article>
+</main>

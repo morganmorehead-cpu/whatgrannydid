@@ -1,0 +1,10 @@
+{
+  "title": "What Granny Did",
+  "tagline": "Real food. Clean home. Jesus first.",
+  "description": "A mom helping moms feed their families real food, clean up their homes, and slow down.",
+  "url": "https://whatgrannydid.com",
+  "instagram": "https://instagram.com/whatgrannydid",
+  "mealPlanLink": "https://REPLACE-WITH-SYSTEME-MEAL-PLAN-LINK",
+  "rooms": ["Air", "Water", "Kitchen", "Pantry and food", "Bedroom", "Bathroom", "Laundry and cleaning", "Kids", "Other"],
+  "recipeCategories": ["Breakfast", "Bread and baking", "Dinner", "Snacks", "Drinks", "Basics"]
+}

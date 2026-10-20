@@ -1,0 +1,43 @@
+---
+layout: base.njk
+---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": {{ title | json | safe }},
+  "description": {{ (description or "") | json | safe }},
+  {% if image %}"image": {{ (site.url + image) | json | safe }},{% endif %}
+  "author": {"@type": "Organization", "name": {{ site.title | json | safe }}},
+  "recipeCategory": {{ (category or "") | json | safe }},
+  "recipeYield": {{ (servings or "") | json | safe }},
+  "recipeIngredient": {{ (ingredients or []) | json | safe }},
+  "recipeInstructions": [{% for s in steps %}{"@type": "HowToStep", "text": {{ s | json | safe }}}{% if not loop.last %},{% endif %}{% endfor %}]
+}
+</script>
+<main>
+<article class="article wide">
+  <p class="kicker"><a href="/recipes/#{{ category | slugify }}">{{ category }}</a></p>
+  <h1>{{ title }}</h1>
+  {% if description %}<p class="section-intro">{{ description }}</p>{% endif %}
+  {% if image %}<img class="hero-img" src="{{ image }}" alt="{{ title }}">{% endif %}
+  <div class="recipe-meta">
+    {% if prepTime %}<div>Prep<strong>{{ prepTime }}</strong></div>{% endif %}
+    {% if cookTime %}<div>Cook<strong>{{ cookTime }}</strong></div>{% endif %}
+    {% if servings %}<div>Makes<strong>{{ servings }}</strong></div>{% endif %}
+    <div><button class="print-btn" onclick="window.print()">Print recipe</button></div>
+  </div>
+  <div class="recipe-body">
+    <div>
+      <h2>Ingredients</h2>
+      <ul>{% for i in ingredients %}<li>{{ i }}</li>{% endfor %}</ul>
+    </div>
+    <div>
+      <h2>Steps</h2>
+      <ol>{% for s in steps %}<li>{{ s }}</li>{% endfor %}</ol>
+    </div>
+  </div>
+  {% if content | trim %}<h2>Notes</h2>{{ content | safe }}{% endif %}
+  <p class="back"><a href="/recipes/">Back to all recipes</a></p>
+</article>
+</main>

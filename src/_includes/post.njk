@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+<main>
+<article class="article">
+  <h1>{{ title }}</h1>
+  <p class="meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time></p>
+  {% if image %}<img class="hero-img" src="{{ image }}" alt="{{ imageAlt or title }}">{% endif %}
+  {{ content | safe }}
+  <p class="note">This is our family’s experience, not medical advice. Please talk with your healthcare provider about your family’s needs.</p>
+  <p class="back"><a href="/journal/">Back to the journal</a></p>
+</article>
+</main>

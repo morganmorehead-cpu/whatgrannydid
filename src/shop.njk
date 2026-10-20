@@ -1,0 +1,20 @@
+---
+layout: base.njk
+title: Shop
+permalink: /shop/
+---
+<main><section class="page-head"><div class="wrap">
+  <h1>Shop</h1>
+  <p class="section-intro">Simple, faith-first guides for real families on real budgets.</p>
+  <div class="shop">
+  {% for s in collections.shop | byOrder %}
+    <div class="product{% if s.data.status == 'Coming soon' %} soon{% endif %}">
+      {% if s.data.image %}<img src="{{ s.data.image }}" alt="" style="border-radius:6px;margin-bottom:1rem">{% endif %}
+      <h3>{{ s.data.title }}</h3>
+      <p class="price">{{ s.data.price }}</p>
+      <p>{{ s.data.description }}</p>
+      <a class="btn {% if s.data.status == 'Available' %}btn-primary{% else %}btn-quiet{% endif %}" href="{{ s.data.link }}">{{ s.data.buttonText }}</a>
+    </div>
+  {% endfor %}
+  </div>
+</div></section></main>

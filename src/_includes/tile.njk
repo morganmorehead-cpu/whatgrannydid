@@ -1,0 +1,6 @@
+<a class="tile" href="{{ t.url }}">
+  <div class="thumb">{% if t.data.image %}<img src="{{ t.data.image }}" alt="" loading="lazy">{% else %}{{ t.data.title }}{% endif %}</div>
+  {% if kicker %}<p class="kicker">{{ kicker }}</p>{% endif %}
+  <h3>{{ t.data.title }}</h3>
+  {% if t.data.description %}<p>{{ t.data.description }}</p>{% endif %}
+</a>

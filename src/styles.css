@@ -1,0 +1,171 @@
+/* What Granny Did — shared styles
+   Palette inspired by enamelware, butter, and a gingham tablecloth. */
+:root{
+  --milk:#FBFAF6;
+  --enamel:#1E3A5C;
+  --enamel-soft:#E6ECF3;
+  --butter:#F3D36B;
+  --ink:#26221F;
+  --muted:#5E5A55;
+  --line:#D9DEE5;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"Karla", "Helvetica Neue", Arial, sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--milk);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--enamel);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--butter);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.15;color:var(--enamel);margin:0 0 .6em}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+h3{font-size:1.35rem}
+p{margin:0 0 1em}
+
+/* Header */
+.site-header{border-bottom:1px solid var(--line);background:var(--milk)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:1rem;padding-bottom:1rem;flex-wrap:wrap}
+.wordmark{font-family:var(--display);font-size:1.5rem;color:var(--enamel);text-decoration:none}
+.nav{display:flex;gap:1.4rem;flex-wrap:wrap}
+.nav a{text-decoration:none;color:var(--ink);font-weight:600}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--enamel);text-decoration:underline;text-decoration-color:var(--butter);text-decoration-thickness:3px}
+
+/* Gingham — the one bold element */
+.gingham{
+  height:28px;
+  background-color:var(--milk);
+  background-image:
+    linear-gradient(90deg, rgba(30,58,92,.55) 50%, transparent 50%),
+    linear-gradient(rgba(30,58,92,.55) 50%, transparent 50%);
+  background-size:28px 28px;
+}
+
+/* Buttons */
+.btn{display:inline-block;padding:.85rem 1.4rem;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--enamel)}
+.btn-primary{background:var(--enamel);color:var(--milk)}
+.btn-primary:hover{background:#16304D}
+.btn-quiet{background:transparent;color:var(--enamel)}
+.btn-quiet:hover{background:var(--enamel-soft)}
+.actions{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* Hero */
+.hero{padding:4.5rem 0 4rem}
+.hero .wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center}
+.hero p.lede{font-size:1.25rem;color:var(--muted);max-width:36ch}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero{padding:3rem 0}}
+
+/* Recipe card */
+.recipe-card{
+  background:#fff;border:1px solid var(--line);border-radius:6px;
+  padding:1.6rem 1.6rem 1.2rem;transform:rotate(-1.2deg);
+  box-shadow:0 18px 30px -22px rgba(30,58,92,.45);
+  background-image:linear-gradient(transparent 2.15rem, var(--enamel-soft) 2.15rem, var(--enamel-soft) calc(2.15rem + 1px), transparent calc(2.15rem + 1px));
+  background-size:100% 2.2rem;background-position:0 3.2rem;
+}
+.recipe-card h2{font-size:1.5rem;border-bottom:2px solid #C8553D22;padding-bottom:.4rem;margin-bottom:.6rem}
+.recipe-card ul{list-style:none;margin:0;padding:0}
+.recipe-card li{line-height:2.2rem;font-size:1.05rem}
+.recipe-card li::before{content:"✓";color:var(--enamel);margin-right:.6rem;font-weight:700}
+@media (prefers-reduced-motion:no-preference){.recipe-card{transition:transform .3s}.recipe-card:hover{transform:rotate(0)}}
+
+/* Sections */
+section{padding:4rem 0}
+.section-intro{max-width:60ch;color:var(--muted);font-size:1.1rem}
+.band{background:var(--enamel);color:var(--milk)}
+.band h2,.band h3{color:var(--milk)}
+.band .section-intro{color:#D8E1EC}
+.band a{color:var(--butter)}
+
+/* Free plan */
+.freebie{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.freebie .btn-primary{background:var(--butter);color:var(--enamel);border-color:var(--butter)}
+.freebie .btn-primary:hover{background:#F7DE8B}
+@media (max-width:720px){.freebie{grid-template-columns:1fr}}
+
+/* Shop */
+.shop{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.product{border-top:4px solid var(--enamel);padding-top:1.2rem}
+.product.soon{border-top-style:dashed;opacity:.85}
+.price{font-family:var(--display);font-size:1.6rem;color:var(--ink);margin:.2rem 0 .8rem}
+@media (max-width:860px){.shop{grid-template-columns:1fr}}
+
+/* Favorites */
+.rooms{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem 2.5rem;margin-top:2rem}
+.room h3{border-bottom:1px solid var(--line);padding-bottom:.4rem}
+.room ul{list-style:none;padding:0;margin:0}
+.room li{padding:.45rem 0;border-bottom:1px dashed var(--line)}
+.room li a{font-weight:600}
+.room li span{display:block;color:var(--muted);font-size:.95rem}
+
+/* Journal list */
+.posts{display:grid;gap:0;margin-top:1.5rem}
+.post-row{display:grid;grid-template-columns:9rem 1fr;gap:1.5rem;padding:1.4rem 0;border-top:1px solid var(--line)}
+.post-row time{color:var(--muted);font-size:.95rem;padding-top:.3rem}
+.post-row h3{margin-bottom:.3rem}
+.post-row h3 a{text-decoration:none}
+.post-row h3 a:hover{text-decoration:underline}
+@media (max-width:600px){.post-row{grid-template-columns:1fr;gap:.2rem}}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start}
+.about blockquote{margin:0;font-family:var(--display);font-size:1.6rem;line-height:1.35;color:var(--enamel);border-left:4px solid var(--butter);padding-left:1.2rem}
+@media (max-width:820px){.about{grid-template-columns:1fr}}
+
+/* Article */
+.article{max-width:68ch;margin:0 auto;padding:3.5rem 1.25rem 4rem}
+.article .meta{color:var(--muted);margin-bottom:2rem}
+.article h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+.article h2{font-size:1.8rem;margin-top:2.2rem}
+.article p,.article li{font-size:1.125rem;line-height:1.75}
+.article blockquote{margin:2rem 0;padding:1rem 1.4rem;background:var(--enamel-soft);border-radius:6px;font-family:var(--display);font-size:1.3rem;color:var(--enamel)}
+.article .note{font-size:.95rem;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem;margin-top:2.5rem}
+
+/* Footer */
+.site-footer{padding:3rem 0 2.5rem;font-size:.95rem;color:var(--muted)}
+.site-footer .cols{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.site-footer .wordmark{font-size:1.3rem}
+.fineprint{max-width:70ch;margin-top:1.5rem;font-size:.85rem}
+.band .room h3{border-bottom-color:rgba(255,255,255,.25)}
+.band .room li{border-bottom-color:rgba(255,255,255,.2)}
+.band .room li span{color:#D8E1EC}
+
+/* ---- Growing-site additions ---- */
+.page-head{padding:3.5rem 0 1rem}
+.page-head h1{margin-bottom:.3em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:2rem;margin-top:2rem}
+.tile{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.tile .thumb{aspect-ratio:4/3;background:var(--enamel-soft);border-radius:6px;overflow:hidden;margin-bottom:.8rem;display:flex;align-items:center;justify-content:center;font-family:var(--display);color:var(--enamel);font-size:1.1rem;text-align:center;padding:1rem}
+.tile .thumb img{width:100%;height:100%;object-fit:cover}
+.tile h3{margin-bottom:.25rem}
+.tile:hover h3{text-decoration:underline;text-decoration-color:var(--butter);text-decoration-thickness:3px}
+.tile p{color:var(--muted);font-size:.98rem;margin:0}
+.kicker{color:var(--muted);font-size:.9rem;margin-bottom:.2rem}
+.chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}
+.chips a{padding:.35rem .9rem;border:1.5px solid var(--enamel);border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem}
+.chips a:hover{background:var(--enamel-soft)}
+.cat-block{padding-top:2.5rem}
+.empty{color:var(--muted);font-style:italic}
+.deal{display:inline-block;background:var(--butter);color:var(--enamel);font-weight:700;font-size:.85rem;padding:.1rem .55rem;border-radius:4px;margin-top:.3rem}
+.featured-tag{font-size:.8rem;font-weight:700;color:var(--enamel);background:var(--butter);border-radius:4px;padding:.05rem .45rem;margin-left:.4rem;vertical-align:middle}
+
+/* Recipe */
+.recipe-meta{display:flex;gap:2rem;flex-wrap:wrap;padding:1rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:1.5rem 0}
+.recipe-meta div{font-size:.95rem;color:var(--muted)}
+.recipe-meta strong{display:block;color:var(--ink);font-size:1.05rem}
+.recipe-body{display:grid;grid-template-columns:1fr 1.6fr;gap:2.5rem}
+.recipe-body ul{padding-left:1.1rem}
+.recipe-body ol li{margin-bottom:.8rem}
+@media (max-width:760px){.recipe-body{grid-template-columns:1fr}}
+.hero-img{border-radius:8px;margin:1.5rem 0}
+.print-btn{background:none;border:2px solid var(--enamel);color:var(--enamel);border-radius:999px;padding:.5rem 1.1rem;font-weight:700;cursor:pointer;font-family:var(--body)}
+@media print{.site-header,.site-footer,.gingham,.print-btn,.back{display:none}.article{padding:0}}
+.article.wide{max-width:900px}
+.room li .featured-tag,.room li .deal{display:inline-block}
+.picks ul{columns:3 240px;column-gap:2.5rem}
+.picks li{break-inside:avoid}
+.room.picks li .featured-tag{display:none}
+.band .room li .deal{color:var(--enamel)}

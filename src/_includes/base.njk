@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title %}{{ title }} | {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ description or site.description }}">
+<meta property="og:title" content="{{ title or site.title }}">
+<meta property="og:description" content="{{ description or site.description }}">
+{% if image %}<meta property="og:image" content="{{ site.url }}{{ image }}">{% endif %}
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌾</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+{% block head %}{% endblock %}
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/">{{ site.title }}</a>
+    <nav class="nav" aria-label="Main">
+      {% set navItems = [["Shop","/shop/"],["Recipes","/recipes/"],["Journal","/journal/"],["Favorites","/favorites/"],["Courses","/courses/"],["About","/about/"]] %}
+      {% for item in navItems %}<a href="{{ item[1] }}"{% if page.url.startsWith(item[1]) %} aria-current="page"{% endif %}>{{ item[0] }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
+{{ content | safe }}
+<div class="gingham" aria-hidden="true"></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="wordmark" href="/">{{ site.title }}</a>
+        <p>{{ site.tagline }}</p>
+      </div>
+      <div>
+        <p><a href="{{ site.instagram }}">Instagram</a><br>
+        <a href="{{ site.mealPlanLink }}">Free 7-day meal plan</a></p>
+      </div>
+    </div>
+    <p class="fineprint"><strong>Affiliate disclosure:</strong> Some links on this site are affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. I only share things I use or trust.</p>
+    <p class="fineprint"><strong>Not medical advice:</strong> I’m a mom sharing what I’ve learned and what I do for my own family. Nothing here replaces advice from a qualified healthcare provider.</p>
+    <p class="fineprint">© <span id="yr"></span> {{ site.title }}</p>
+  </div>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+---
+layout: base.njk
+title: Courses
+permalink: /courses/
+---
+<main><section class="page-head"><div class="wrap">
+  <h1>Courses</h1>
+  <p class="section-intro">Step-by-step lessons to help you bring real food and a healthier home into everyday life.</p>
+  <div class="grid">
+  {% for t in collections.courses | byOrder %}{% set kicker = t.data.status %}{% include "tile.njk" %}
+  {% else %}<p class="empty">Courses are coming soon.</p>{% endfor %}
+  </div>
+</div></section></main>

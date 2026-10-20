@@ -1,0 +1,140 @@
+# What Granny Did admin dashboard settings
+# STEP: replace YOUR-GITHUB-USERNAME below with your GitHub username.
+backend:
+  name: github
+  repo: YOUR-GITHUB-USERNAME/whatgrannydid
+  branch: main
+
+site_url: https://whatgrannydid.com
+display_url: https://whatgrannydid.com
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Journal posts"
+    label_singular: "Journal post"
+    folder: "src/journal"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title"]
+    summary: "{{title}} ({{year}}-{{month}}-{{day}})"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Short description (shows in lists and Google)", name: "description", widget: "text"}
+      - {label: "Publish date", name: "date", widget: "datetime"}
+      - {label: "Main photo", name: "image", widget: "image", required: false}
+      - {label: "Post", name: "body", widget: "markdown"}
+
+  - name: "recipes"
+    label: "Recipes"
+    label_singular: "Recipe"
+    folder: "src/recipes"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["date", "title", "category"]
+    fields:
+      - {label: "Recipe name", name: "title", widget: "string"}
+      - {label: "Short description", name: "description", widget: "text"}
+      - {label: "Publish date", name: "date", widget: "datetime"}
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Breakfast", "Bread and baking", "Dinner", "Snacks", "Drinks", "Basics"]
+      - {label: "Prep time", name: "prepTime", widget: "string", required: false, hint: "Example: 15 minutes"}
+      - {label: "Cook time", name: "cookTime", widget: "string", required: false}
+      - {label: "Makes / servings", name: "servings", widget: "string", required: false, hint: "Example: 12 muffins"}
+      - {label: "Photo", name: "image", widget: "image", required: false}
+      - label: "Ingredients"
+        name: "ingredients"
+        widget: "list"
+        field: {label: "Ingredient", name: "ingredient", widget: "string"}
+      - label: "Steps"
+        name: "steps"
+        widget: "list"
+        field: {label: "Step", name: "step", widget: "text"}
+      - {label: "Notes and tips", name: "body", widget: "markdown", required: false}
+
+  - name: "favorites"
+    label: "Favorites and affiliate products"
+    label_singular: "Product"
+    folder: "src/favorites"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: ["room", "title", "order"]
+    summary: "{{title}} ({{room}})"
+    fields:
+      - {label: "Product name", name: "title", widget: "string"}
+      - label: "Room"
+        name: "room"
+        widget: "select"
+        options: ["Air", "Water", "Kitchen", "Pantry and food", "Bedroom", "Bathroom", "Laundry and cleaning", "Kids", "Other"]
+      - {label: "Short description", name: "description", widget: "string", hint: "Example: Our mattress"}
+      - {label: "Affiliate link", name: "link", widget: "string"}
+      - {label: "Deal or discount code (optional)", name: "deal", widget: "string", required: false, hint: "Example: Use code GRANNY for 10% off"}
+      - {label: "Top pick (shows on the home page)", name: "featured", widget: "boolean", default: false}
+      - {label: "Sort order (lower shows first)", name: "order", widget: "number", default: 50}
+
+  - name: "shop"
+    label: "Shop products"
+    label_singular: "Shop product"
+    folder: "src/shop"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Product name", name: "title", widget: "string"}
+      - {label: "Price (example: $20, Free, Coming soon)", name: "price", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Button text", name: "buttonText", widget: "string", default: "Buy now"}
+      - {label: "Link (your Systeme.io page)", name: "link", widget: "string"}
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Available", "Free", "Coming soon"]
+      - {label: "Cover image", name: "image", widget: "image", required: false}
+      - {label: "Sort order (lower shows first)", name: "order", widget: "number", default: 10}
+
+  - name: "courses"
+    label: "Courses"
+    label_singular: "Course"
+    folder: "src/courses"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Course name", name: "title", widget: "string"}
+      - {label: "Short description", name: "description", widget: "text"}
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Coming soon", "Open for enrollment"]
+      - {label: "Enrollment link (your Systeme.io course or sales page)", name: "link", widget: "string", required: false}
+      - {label: "Button text", name: "buttonText", widget: "string", default: "Enroll now"}
+      - {label: "Cover image", name: "image", widget: "image", required: false}
+      - {label: "Sort order", name: "order", widget: "number", default: 10}
+      - {label: "Course details", name: "body", widget: "markdown"}
+
+  - name: "settings"
+    label: "Site settings"
+    files:
+      - label: "Main settings and links"
+        name: "site"
+        file: "src/_data/site.json"
+        fields:
+          - {label: "Site name", name: "title", widget: "string"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Site description (for Google)", name: "description", widget: "text"}
+          - {label: "Website address", name: "url", widget: "string"}
+          - {label: "Instagram link", name: "instagram", widget: "string"}
+          - {label: "Free meal plan link (Systeme.io)", name: "mealPlanLink", widget: "string"}
+          - {label: "Rooms (order on Favorites page)", name: "rooms", widget: "list", field: {label: "Room", name: "room", widget: "string"}}
+          - {label: "Recipe categories (order on Recipes page)", name: "recipeCategories", widget: "list", field: {label: "Category", name: "category", widget: "string"}}

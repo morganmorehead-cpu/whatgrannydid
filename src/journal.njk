@@ -1,0 +1,17 @@
+---
+layout: base.njk
+title: Journal
+permalink: /journal/
+---
+<main><section class="page-head"><div class="wrap">
+  <h1>Journal</h1>
+  <p class="section-intro">Stories, lessons, and how-tos from our home.</p>
+  <div class="posts">
+  {% for p in collections.posts | newest %}
+    <article class="post-row">
+      <time datetime="{{ p.date | isoDate }}">{{ p.date | readableDate }}</time>
+      <div><h3><a href="{{ p.url }}">{{ p.data.title }}</a></h3><p>{{ p.data.description }}</p></div>
+    </article>
+  {% else %}<p class="empty">New posts are on the way.</p>{% endfor %}
+  </div>
+</div></section></main>

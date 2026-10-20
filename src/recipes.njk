@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Recipes
+permalink: /recipes/
+---
+<main><section class="page-head"><div class="wrap">
+  <h1>Recipes</h1>
+  <p class="section-intro">Real food from our kitchen. Every grain is fresh-milled.</p>
+  <nav class="chips" aria-label="Recipe categories">
+    {% for c in site.recipeCategories %}{% if collections.recipes | where("category", c) | length %}<a href="#{{ c | slugify }}">{{ c }}</a>{% endif %}{% endfor %}
+  </nav>
+  {% for c in site.recipeCategories %}{% set items = collections.recipes | where("category", c) | newest %}{% if items | length %}
+  <div class="cat-block" id="{{ c | slugify }}">
+    <h2>{{ c }}</h2>
+    <div class="grid">{% for t in items %}{% set kicker = false %}{% include "tile.njk" %}{% endfor %}</div>
+  </div>
+  {% endif %}{% endfor %}
+</div></section></main>

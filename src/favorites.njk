@@ -1,0 +1,21 @@
+---
+layout: base.njk
+title: Favorites
+description: The products we use and trust, room by room.
+permalink: /favorites/
+---
+<main><section class="page-head"><div class="wrap">
+  <h1>My favorites</h1>
+  <p class="section-intro">The products we use and trust, organized by room. You don’t need all of them. Start with what you can afford, and remember the free swaps come first.</p>
+  <nav class="chips" aria-label="Rooms">
+    {% for r in site.rooms %}{% if collections.favorites | where("room", r) | length %}<a href="#{{ r | slugify }}">{{ r }}</a>{% endif %}{% endfor %}
+  </nav>
+  <div class="rooms">
+  {% for r in site.rooms %}{% set items = collections.favorites | where("room", r) | byOrder %}{% if items | length %}
+    <div class="room" id="{{ r | slugify }}">
+      <h3>{{ r }}</h3>
+      <ul>{% for f in items %}{% include "favorite.njk" %}{% endfor %}</ul>
+    </div>
+  {% endif %}{% endfor %}
+  </div>
+</div></section></main>
